@@ -105,7 +105,7 @@ void main() {
 
   patinet.actualitzarUbicacio(39.5582, 2.6758);
   var (lat, lng) = patinet.obtenirCoordenades(); //destructuracìó
-  print('Nova posició de GPS de ${patinet.id}: latitud=$lat, longitud=$lng');
+  print('Nova posició de GPS de ${patinet.id}: latitud= $lat, longitud= $lng');
 
   //4. Maneig d'errors
   print('\n--- 4. MANEIG D\'ERRORS ---');
