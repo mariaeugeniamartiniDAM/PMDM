@@ -8,7 +8,7 @@ class SaldoInvalidException implements Exception {
 }
 
 class User {
-  //Atributs privats.
+  // Atributs privats.
   final String _id;
   String _nomComplet;
   double _saldo;
@@ -17,14 +17,14 @@ class User {
   String correu;
   bool esVIP;
 
-  //Constructor nombrat: usuari nou amb saldo inicial 0.0
+  /// Constructor nombrat: usuari nou amb saldo inicial 0.0
   User.nou({required String id, required String nom, required this.correu})
     : _id = id,
       _nomComplet = nom,
       _saldo = 0.0,
       esVIP = false;
 
-  // Construct complet amb tots els paràmetres
+  /// Construct complet amb tots els paràmetres
   User(
     this._id,
     this._nomComplet,
