@@ -35,7 +35,7 @@ abstract class Vehicle with GpsLocation {
   String toString() =>
       '\n$runtimeType: $id, \n'
       'bateria: $bateriaPercentatge% [${estatBateria()}], \n'
-      'preu per minut: preuPerMinut €,\n'
+      'preu per minut: $preuPerMinut €,\n'
       'latitud: $latitud, \n'
       'longitud: $longitud, \n'
       'en ús: $enUs';
