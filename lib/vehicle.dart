@@ -40,5 +40,5 @@ abstract class Vehicle with GpsLocation {
       'enUs: $enUs)';
 
   //Format curt: utilitzat a cerca i filtres
-  String resum() => '$id, bateria: %bateriaPercentatge% [${estatBateria()}]';
+  String resum() => '$id, bateria: $bateriaPercentatge% [${estatBateria()}]';
 }
