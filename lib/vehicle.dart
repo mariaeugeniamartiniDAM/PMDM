@@ -35,9 +35,10 @@ abstract class Vehicle with GpsLocation {
   String toString() =>
       '\n$runtimeType: $id, \n'
       'bateria: $bateriaPercentatge% [${estatBateria()}], \n'
+      'preu per minut: preuPerMinut €,\n'
       'latitud: $latitud, \n'
       'longitud: $longitud, \n'
-      'enUs: $enUs';
+      'en ús: $enUs';
 
   //Format curt: utilitzat a cerca i filtres
   String resum() => '$id, bateria: $bateriaPercentatge% [${estatBateria()}]';
