@@ -5,7 +5,7 @@ import 'package:ecoride/vehicle.dart';
 
 void main() {
   // 1. Inicialització
-  print('--- 1. INICIALITZACIÓ DE LA FLOTA ---');
+  print('\n--- 1. INICIALITZACIÓ DE LA FLOTA ---');
   final List<Vehicle> flota = [
     Patinet(
       id: 'PAT-01',
