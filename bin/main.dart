@@ -72,12 +72,14 @@ void main() {
   final millorBateria = flota.reduce(
     (a, b) => a.bateriaPercentatge >= b.bateriaPercentatge ? a : b,
   );
-  print('Vehicle amb la bateria més alta: ${millorBateria.resum()}');
+  print('\nVehicle amb la bateria més alta: ${millorBateria.resum()}');
 
   final disponibles = flota
       .where((v) => v.bateriaPercentatge > 20 && !v.enUs)
       .toList();
-  print('Vehicles amb bateria major al 20% i lliures (${disponibles.length}):');
+  print(
+    '\nVehicles amb bateria major al 20% i lliures (${disponibles.length}):',
+  );
   for (final v in disponibles) {
     print(' - ${v.resum()}');
   }
@@ -97,7 +99,7 @@ void main() {
   final cost = patinet.calcularCostReserva(minuts, usuari: usuari1);
   patinet.enUs = true;
   print(
-    '${usuari1.nomComplet} (VIP) ha reservat ${patinet.id} durant $minuts min.',
+    '\n${usuari1.nomComplet} (VIP) ha reservat ${patinet.id} durant $minuts min.',
   );
   print('Cost calculat: ${cost.toStringAsFixed(2)} €.');
 
