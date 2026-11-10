@@ -72,14 +72,14 @@ void main() {
   final millorBateria = flota.reduce(
     (a, b) => a.bateriaPercentatge >= b.bateriaPercentatge ? a : b,
   );
-  print('Vehicle amb la bateria més alta: $millorBateria');
+  print('Vehicle amb la bateria més alta: ${millorBateria.resum()}');
 
   final disponibles = flota
       .where((v) => v.bateriaPercentatge > 20 && !v.enUs)
       .toList();
   print('Vehicles amb bateria major al 20% i lliures (${disponibles.length}):');
   for (final v in disponibles) {
-    print(' - $v');
+    print(' - ${v.resum()}');
   }
 
   // 3. Simulació d'ús i Records
@@ -109,6 +109,7 @@ void main() {
   print('\n--- 4. MANEIG D\'ERRORS ---');
 
   // Prova 1: recàrrega NEGATIVA (ha de fallar)
+  print('\nProva nº1');
   try {
     print('Saldo anterior: ${usuari1.saldo} €');
     usuari1.recarregarSaldo(-10.0);
@@ -120,6 +121,7 @@ void main() {
   }
 
   // Prova 2: recàrrega POSITIVA (ha de funcionar)
+  print('\nProva nº2');
   try {
     print('Saldo anterior: ${usuari1.saldo} €');
     usuari1.recarregarSaldo(8.0);
