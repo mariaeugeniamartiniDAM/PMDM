@@ -33,7 +33,11 @@ abstract class Vehicle with GpsLocation {
   /// Format complet: utilitzat a la inicialització
   @override
   String toString() =>
-      '$runtimeType($id, bateria: $bateriaPercentatge% [${estatBateria()}]), latitud: $latitud, longitud: $longitud, enUs: $enUs)';
+      '$runtimeType: $id, \n'
+      'bateria: $bateriaPercentatge% [${estatBateria()}]), \n'
+      'latitud: $latitud, \n'
+      'longitud: $longitud, \n'
+      'enUs: $enUs)';
 
   //Format curt: utilitzat a cerca i filtres
   String resum() => '$id, bateria: %bateriaPercentatge% [${estatBateria()}]';
