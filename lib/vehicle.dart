@@ -30,7 +30,11 @@ abstract class Vehicle with GpsLocation {
   /// Mètode abstracte, cada subclasse calcula el cost amb una manera pròpia
   double calcularCostReserva(int minuts, {User? usuari});
 
+  /// Format complet: utilitzat a la inicialització
   @override
   String toString() =>
-      '$runtimeType($id, bateria: $bateriaPercentatge% [${estatBateria()}]), enUs: $enUs)';
+      '$runtimeType($id, bateria: $bateriaPercentatge% [${estatBateria()}]), latitud: $latitud, longitud: $longitud, enUs: $enUs)';
+
+  //Format curt: utilitzat a cerca i filtres
+  String resum() => '$id, bateria: %bateriaPercentatge% [${estatBateria()}]';
 }
