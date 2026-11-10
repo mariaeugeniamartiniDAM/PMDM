@@ -10,7 +10,7 @@ class Patinet extends Vehicle {
     required super.preuPerMinut,
     required super.latitud,
     required super.longitud,
-    this.velocitatMaxima = 25,
+    required this.velocitatMaxima,
   });
 
   @override
