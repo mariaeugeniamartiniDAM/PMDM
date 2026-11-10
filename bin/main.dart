@@ -70,13 +70,65 @@ void main() {
   // 2. Cerca i filtres
   print('\n--- 2. CERCA I FILTRES ---');
   final millorBateria = flota.reduce(
-    (a, b) => a.bateriaPercentatge >= b.bateriaPercentatge ? a : b);
+    (a, b) => a.bateriaPercentatge >= b.bateriaPercentatge ? a : b,
+  );
   print('Vehicle amb la bateria més alta: $millorBateria');
 
-  final disponibles =
-    flota.where((v) => v.bateriaPercentatge > 20 && !v.enUs.toList();
-    print('Vehicles amb bateria major al 20% i lliures (${disponibles.length}):');
-    for (final v in disponibles) {
-      print(' - $v');
-    }
+  final disponibles = flota
+      .where((v) => v.bateriaPercentatge > 20 && !v.enUs)
+      .toList();
+  print('Vehicles amb bateria major al 20% i lliures (${disponibles.length}):');
+  for (final v in disponibles) {
+    print(' - $v');
+  }
+
+  // 3. Simulació d'ús i Records
+  print('\n--- 3. SIMULACIÓ DE RESERVA ---');
+  final usuari1 = User.nou(
+    id: 'U-001',
+    nom: 'Ana Garcia Torres',
+    correu: 'anagt@ecoride.cat',
+  );
+  usuari1.esVIP = true;
+  usuari1.recarregarSaldo(30.0);
+
+  final patinet = flota.whereType<Patinet>().first;
+  const minuts = 15;
+  final cost = patinet.calcularCostReserva(minuts, usuari: usuari1);
+  patinet.enUs = true;
+  print(
+    '${usuari1.nomComplet} (VIP) ha reservat ${patinet.id} durant $minuts min.',
+  );
+  print('Cost calculat: ${cost.toStringAsFixed(2)} €.');
+
+  patinet.actualitzarUbicacio(39.5582, 2.6758);
+  var (lat, lng) = patinet.obtenirCoordenades(); //destructuracìó
+  print('Nova posició de GPS de ${patinet.id}: lat=$lat, lng=$lng');
+
+  //4. Maneig d'errors
+  print('\n--- 4. MANEIG D\'ERRORS ---');
+
+  // Prova 1: recàrrega NEGATIVA (ha de fallar)
+  try {
+    print('Saldo anterior: ${usuari1.saldo} €');
+    usuari1.recarregarSaldo(-10.0);
+    print('Recàrrega feta.'); // no ha d'imprimir això
+  } on SaldoInvalidException catch (e) {
+    print('Error capturat: ${e.missatge}');
+  } finally {
+    print('Saldo actual: ${usuari1.saldo} €');
+  }
+
+  // Prova 2: recàrrega POSITIVA (ha de funcionar)
+  try {
+    print('Saldo anterior: ${usuari1.saldo} €');
+    usuari1.recarregarSaldo(8.0);
+    print('Recàrrega feta.');
+  } on SaldoInvalidException catch (e) {
+    print('Error capturat: ${e.missatge}');
+  } finally {
+    print('Saldo actual: ${usuari1.saldo} €');
+  }
+
+  print('\nEl programa ha acabat correctament.');
 }
